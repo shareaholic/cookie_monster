@@ -3,6 +3,7 @@ require 'cookie_monster/base'
 require 'cookie_monster/configuration'
 require 'cookie_monster/encryption'
 require 'cookie_monster/version'
+require 'cookie_monster/jar'
 
 module CookieMonster
   class << self

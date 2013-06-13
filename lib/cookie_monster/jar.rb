@@ -1,13 +1,17 @@
 module CookieMonster
   class Jar < Base
-    def initialize(cookie_object)
+    def initialize(cookie_object, options)
       @cookie_object = cookie_object
-      @options = configuration.cookies
+      @options = options
     end
 
     def [](key)
       cookie = @cookie_object[key]
       return nil unless cookie
+
+      if cookie.is_a? Hash
+        cookie = cookie[:value]
+      end
 
       encrypted = Encryption.new(cookie)
       encrypted.decrypt

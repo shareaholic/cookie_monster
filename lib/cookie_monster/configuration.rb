@@ -4,7 +4,6 @@ module CookieMonster
 
     def initialize
       @cipher_type = 'AES-256-CBC'
-      @cookies = {}
     end
   end
 end
