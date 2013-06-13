@@ -1,0 +1,4 @@
+CookieMonster.configure do |config|
+  config.key = '47644314d297f3678dfd3ce757299b7cfa39181becd984c255728687c091d91df5e23e550f3d0d6625b9435e8b04ac804a27ea1978384b71ea2e1d678be90b9b'
+  config.iv = '0.2767140515573705'
+end
