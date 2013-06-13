@@ -1,3 +1,9 @@
+require 'openssl'
+require 'cookie_monster/base'
+require 'cookie_monster/configuration'
+require 'cookie_monster/encryption'
+require 'cookie_monster/version'
+
 module CookieMonster
   class << self
     attr_accessor :configuration
@@ -5,6 +11,6 @@ module CookieMonster
 
   def self.configure
     self.configuration ||= Configuration.new
-    yield(configuration)
+    yield(configuration) if block_given?
   end
 end
