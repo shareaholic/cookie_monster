@@ -9,6 +9,8 @@ module CookieMonster
     end
 
     def [](key)
+      key = key.to_s
+
       if @response.cookies[key]
         cookie = @response.cookies[key]
       elsif @request.cookies[key]
