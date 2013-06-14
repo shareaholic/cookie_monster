@@ -1,5 +1,4 @@
-require 'test/unit'
-require 'cookie_monster'
+require 'test_helper'
 
 class CookieMonsterTest < Test::Unit::TestCase
   def test_configuration

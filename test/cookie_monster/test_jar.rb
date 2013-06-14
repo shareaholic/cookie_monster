@@ -1,5 +1,4 @@
-require 'test/unit'
-require 'cookie_monster'
+require 'test_helper'
 
 class FakeRequest
   def cookies
@@ -22,10 +21,6 @@ end
 
 class JarTest < Test::Unit::TestCase
   def setup
-    CookieMonster.configure do |config|
-      config.key = 'a key'
-      config.iv = 'an iv'
-    end
     @options = {
       request: FakeRequest.new,
       response: FakeResponse.new
