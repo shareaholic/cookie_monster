@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   def index
     auth_cookie[:encrypted] = 'something'
     cookies[:something_else] = 'something else'
-    puts response.cookies
     response.set_cookie 'key', { value: 'something', path: '/' }
     render json: response.cookies
   end

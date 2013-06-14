@@ -1,5 +1,7 @@
 module CookieMonster
   class Jar < Base
+    attr_reader :request, :response
+
     def initialize(options)
       @request = options.delete(:request)
       @response = options.delete(:response)
@@ -7,9 +9,13 @@ module CookieMonster
     end
 
     def [](key)
-      puts @request.cookies
-      cookie = @request.cookies[key]
-      return nil unless cookie
+      if @response.cookies[key]
+        cookie = @response.cookies[key]
+      elsif @request.cookies[key]
+        cookie = @request.cookies[key]
+      else
+        return nil
+      end
 
       if cookie.is_a? Hash
         cookie = cookie[:value]
