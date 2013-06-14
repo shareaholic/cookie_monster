@@ -10,5 +10,5 @@ Gem::Specification.new do |s|
   s.authors     = ["Dylan Griffin"]
   s.email       = 'dylan@dylangriff.in'
   s.files       = `git ls-files`.split("\n")
-  s.homepage    = 'https://shareaholic.com'
+  s.homepage    = 'http://dylangriff.in'
 end
