@@ -12,8 +12,6 @@ class CookieMonsterTest < Test::Unit::TestCase
   end
 
   def test_default_cipher_type
-    CookieMonster.configure
-
     assert_equal 'AES-256-CBC', CookieMonster.configuration.cipher_type
   end
 end
