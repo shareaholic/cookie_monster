@@ -28,8 +28,9 @@ include CookieMonster::Rails
 
 This includes a method `cookie_monster` which behaves just like `cookies`.
 Otherwise, you need to instantiate a new `CookieMonster::Jar` object with a
-`request` and `response` objects. You can also provide options for the cookie
-setting. This could look like the following:
+`request` and `response` objects. `request` and `response` should both response
+to `cookies`, and `response` should also respond to `set_cookie`. You can also
+provide options for the cookie setting. This could look like the following:
 
 ```ruby
 def cookie_monster
