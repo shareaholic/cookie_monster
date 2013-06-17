@@ -8,15 +8,19 @@ module CookieMonster
     end
 
     def encrypt
+      iv = configuration.iv
       @aes.encrypt
+      @aes.iv = iv
       @aes.key = @key
-      @aes.update(json_serialized_payload) + @aes.final
+      iv + ':' + @aes.update(json_serialized_payload) + @aes.final
     end
 
     def decrypt
+      iv, payload = @payload.split(':', 2)
       @aes.decrypt
+      @aes.iv = iv
       @aes.key = @key
-      decrypted = @aes.update(@payload) + @aes.final
+      decrypted = @aes.update(payload) + @aes.final
       json_parsed_payload decrypted
     rescue OpenSSL::Cipher::CipherError
       raise PasswordInvalid, "Password incorrect!"
