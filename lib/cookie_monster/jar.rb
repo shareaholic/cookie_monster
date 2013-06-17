@@ -9,12 +9,13 @@ module CookieMonster
     end
 
     def [](key)
-      key = key.to_s
+      response_cookies = @response.cookies.with_indifferent_access
+      request_cookies = @request.cookies.with_indifferent_access
 
-      if @response.cookies[key]
-        cookie = @response.cookies[key]
-      elsif @request.cookies[key]
-        cookie = @request.cookies[key]
+      if response_cookies[key]
+        cookie = response_cookies[key]
+      elsif request_cookies[key]
+        cookie = request_cookies[key]
       else
         return nil
       end
@@ -30,7 +31,7 @@ module CookieMonster
     def []=(key, value)
       encrypted_value = Encryption.new(value).encrypt
 
-      @response.set_cookie key.to_s, {
+      @response.set_cookie key, {
         :value => encrypted_value,
         :httponly => @options[:httponly],
         :expires => @options[:expires],
