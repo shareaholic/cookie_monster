@@ -10,7 +10,7 @@ class FakeResponse
   attr_reader :cookies
   def initialize
     @cookies = {
-      a_cookie: CookieMonster::Encryption.new('already set').encrypt
+      'a_cookie' => CookieMonster::Encryption.new('already set').encrypt
     }
   end
 
@@ -31,7 +31,7 @@ class JarTest < Test::Unit::TestCase
   def test_setting_a_cookie
     @jar[:hello] = 'testing a cookie'
     assert_equal CookieMonster::Encryption.new('testing a cookie').encrypt,
-      @jar.response.cookies[:hello][:value]
+      @jar.response.cookies['hello'][:value]
   end
 
   def test_reading_a_cookie_set_in_response_first

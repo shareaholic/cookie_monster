@@ -30,7 +30,7 @@ module CookieMonster
     def []=(key, value)
       encrypted_value = Encryption.new(value).encrypt
 
-      @response.set_cookie key, {
+      @response.set_cookie key.to_s, {
         :value => encrypted_value,
         :httponly => @options[:httponly],
         :expires => @options[:expires],
