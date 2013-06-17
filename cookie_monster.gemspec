@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Dylan Griffin"]
   s.email       = 'dylan@dylangriff.in'
   s.files       = `git ls-files`.split("\n")
-  s.homepage    = 'http://dylangriff.in'
+  s.homepage    = 'https://github.com/shareaholic/cookie_monster'
 
   s.add_dependency("activesupport", ">= 3.0.0")
 end
