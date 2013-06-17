@@ -1,5 +1,6 @@
 $LOAD_PATH << File.expand_path("../lib", __FILE__)
 require 'cookie_monster/version'
+require 'date'
 
 Gem::Specification.new do |s|
   s.name        = 'cookie_monster'
@@ -12,5 +13,8 @@ Gem::Specification.new do |s|
   s.files       = `git ls-files`.split("\n")
   s.homepage    = 'https://github.com/shareaholic/cookie_monster'
 
-  s.add_dependency("activesupport", ">= 3.0.0")
+  s.add_dependency "activesupport", ">= 3.0.0"
+
+  s.add_development_dependency 'mocha', '~> 0.14.0'
+  s.add_development_dependency 'rake', '~> 10.0.4'
 end
