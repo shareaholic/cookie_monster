@@ -1,0 +1,12 @@
+rvm:
+  - 1.9.2
+  - 1.9.3
+  - jruby-19mode
+before_install:
+  - gem update --system
+script: "bundle exec rake"
+jdk:
+  - openjdk6
+branches:
+  only:
+    - master
