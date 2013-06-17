@@ -4,7 +4,7 @@ require 'cookie_monster/version'
 Gem::Specification.new do |s|
   s.name        = 'cookie_monster'
   s.version     = CookieMonster::VERSION
-  s.date        = '2013-05-13'
+  s.date        = Date.today
   s.summary     = "A simple gem to encrypt cookies for ruby applications."
   s.description = "A simple gem to encrypt cookies for ruby applications."
   s.authors     = ["Dylan Griffin"]
