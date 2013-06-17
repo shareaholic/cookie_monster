@@ -1,4 +1,9 @@
 require 'openssl'
+require 'json'
+
+require 'active_support'
+require 'active_support/core_ext/hash'
+
 require 'cookie_monster/base'
 require 'cookie_monster/configuration'
 require 'cookie_monster/encryption'
