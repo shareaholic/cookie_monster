@@ -29,6 +29,7 @@ class JarTest < Test::Unit::TestCase
   end
 
   def test_setting_a_cookie
+    CookieMonster.configuration.expects(:iv).at_least_once.returns('x' * 16)
     @jar[:hello] = 'testing a cookie'
     assert_equal CookieMonster::Encryption.new('testing a cookie').encrypt,
       @jar.response.cookies[:hello][:value]
