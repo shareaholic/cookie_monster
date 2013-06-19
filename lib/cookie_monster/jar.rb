@@ -9,8 +9,8 @@ module CookieMonster
     end
 
     def [](key)
-      response_cookies = @response.cookies.with_indifferent_access
-      request_cookies = @request.cookies.with_indifferent_access
+      response_cookies = @response.respond_to?(:cookies) ? @response.cookies.with_indifferent_access : {}
+      request_cookies = @request.respond_to?(:cookies) ? @request.cookies.with_indifferent_access : {}
 
       if response_cookies[key]
         cookie = response_cookies[key]
