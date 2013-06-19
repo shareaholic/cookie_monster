@@ -12,11 +12,13 @@ module CookieMonster
       @aes.encrypt
       @aes.iv = iv
       @aes.key = @key
-      iv + ':' + @aes.update(json_serialized_payload) + @aes.final
+      encrypted = iv + ':' + @aes.update(json_serialized_payload) + @aes.final
+      Base64.encode64 encrypted
     end
 
     def decrypt
-      iv, payload = @payload.split(':', 2)
+      payload = Base64.decode64 @payload
+      iv, payload = payload.split(':', 2)
       @aes.decrypt
       @aes.iv = iv
       @aes.key = @key
