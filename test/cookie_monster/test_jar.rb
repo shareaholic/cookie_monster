@@ -53,4 +53,9 @@ class JarTest < Test::Unit::TestCase
     @jar[:something] = hash
     assert_equal hash, @jar[:something]
   end
+
+  def test_including_other_options
+    @jar[:cookie] = 'something', { expires: 'some point in the future' }
+    assert_equal 'some point in the future', @jar.response.cookies[:cookie][:expires]
+  end
 end

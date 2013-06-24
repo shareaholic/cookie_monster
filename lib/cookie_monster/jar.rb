@@ -28,15 +28,18 @@ module CookieMonster
       encrypted.decrypt
     end
 
-    def []=(key, value)
+    def []=(key, value_or_options)
+      value, options = value_or_options
+      options ||= {}
+
       encrypted_value = Encryption.new(value).encrypt
 
       @response.set_cookie key, {
         :value => encrypted_value,
-        :httponly => @options[:httponly],
-        :expires => @options[:expires],
-        :domain => @options[:domain],
-        :path => @options[:path] || '/',
+        :httponly => options[:httponly],
+        :expires => options[:expires],
+        :domain => options[:domain],
+        :path => options[:path] || '/',
         :secure => false # Needed so it can be read by cookie logger over http
       }
     end
