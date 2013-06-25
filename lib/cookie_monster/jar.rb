@@ -1,21 +1,14 @@
 module CookieMonster
   class Jar < Base
-    attr_reader :request, :response
+    attr_reader :cookies
 
-    def initialize(options)
-      @request = options.delete(:request)
-      @response = options.delete(:response)
-      @options = options
+    def initialize(cookies)
+      @cookies = cookies
     end
 
     def [](key)
-      response_cookies = @response.respond_to?(:cookies) ? @response.cookies.with_indifferent_access : {}
-      request_cookies = @request.respond_to?(:cookies) ? @request.cookies.with_indifferent_access : {}
-
-      if response_cookies[key]
-        cookie = response_cookies[key]
-      elsif request_cookies[key]
-        cookie = request_cookies[key]
+      if @cookies[key]
+        cookie = @cookies[key]
       else
         return nil
       end
@@ -34,7 +27,7 @@ module CookieMonster
 
       encrypted_value = Encryption.new(value).encrypt
 
-      @response.set_cookie key, {
+      @cookies[key] = {
         :value => encrypted_value,
         :httponly => options[:httponly],
         :expires => options[:expires],

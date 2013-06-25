@@ -3,7 +3,7 @@ module CookieMonster
     private
 
     def cookie_monster
-      @cookie_monster ||= CookieMonster::Jar.new(request: request, response: response, expires: 1.day.from_now)
+      @cookie_monster ||= CookieMonster::Jar.new(cookies)
     end
   end
 end
