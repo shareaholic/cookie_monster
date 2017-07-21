@@ -1,3 +1,5 @@
+require 'securerandom'
+
 module CookieMonster
   class Configuration
     attr_accessor :key, :cipher_type
@@ -7,7 +9,7 @@ module CookieMonster
     end
 
     def iv
-      rand.to_s
+      SecureRandom.hex(10)
     end
   end
 end
